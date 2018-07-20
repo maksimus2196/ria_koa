@@ -10,7 +10,7 @@ function god_add (id, val) {
                 throw new err
              //   reject(err)
             }
-            console.log(val);
+        
                return(id);// resolve(id);
         })
     //})
@@ -28,8 +28,6 @@ function god_add (id, val) {
     function get_god (id)  {return new Promise((resolve, reject) => {
         memcached.get(`${id}` , (err , data) => {
         if(err) reject(err);
-        console.log(id);
-        console.log(data);
     resolve(data);
 })
   })

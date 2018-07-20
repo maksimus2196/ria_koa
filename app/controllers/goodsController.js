@@ -6,11 +6,10 @@ module.exports = {
 
 
     get_list: co.wrap(function * get_list (ctx, next) {
-      console.log ( yield get_god(parseInt(ctx.params.id)));
       if(get_god(parseInt(ctx.params.id))){
 
-            ctx.res.writeHead(200 , {"Content-type":"text/plain"});
-          ctx.body =  get_god(parseInt(ctx.params.id));
+        ctx.res.writeHead(200 , {"Content-type":"text/plain"});
+          ctx.body = yield get_god(parseInt(ctx.params.id));
         
           yield next();
         }
@@ -45,7 +44,6 @@ module.exports = {
                 })
               }
          
-              console.log(yield get_god(id));
               ctx.body= yield god_add(id, `${readBody(ctx)}`);
        
         
@@ -60,9 +58,8 @@ module.exports = {
         god_del(parseInt(ctx.params.id));
 
         keys = keys.map(val => {
-                if(val == parseInt(ctx.params.id)
-        )
-        ;
+       if(val == parseInt(ctx.params.id)
+        );
         else
         return val;
     })})}
